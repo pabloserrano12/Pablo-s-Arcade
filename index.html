@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pablo's Arcade</title>
+
+    <meta
+        name="description"
+        content="Play free mini-games directly from your browser."
+    >
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div id="background"></div>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header>
+
+        <div class="logo">
+            🎮 Pablo's Arcade
+        </div>
+
+        <nav>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="pages/profile.html">
+                Profile
+            </a>
+
+            <a href="pages/shop.html">
+                Shop
+            </a>
+
+            <a href="pages/achievements.html">
+                Achievements
+            </a>
+
+            <a href="pages/settings.html">
+                Settings
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="hero">
+
+        <h1>
+            Welcome to Pablo's Arcade
+        </h1>
+
+        <p>
+            Play unblocked games directly from your browser,
+            made by Pablo.
+        </p>
+
+        <input
+            id="search"
+            type="text"
+            placeholder="Search for a game..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <!-- =========================================
+         CATEGORIES
+    ========================================== -->
+
+    <section class="categories">
+
+        <button class="category active">
+            All
+        </button>
+
+        <button class="category">
+            Arcade
+        </button>
+
+        <button class="category">
+            Puzzle
+        </button>
+
+        <button class="category">
+            Action
+        </button>
+
+        <button class="category">
+            Classics
+        </button>
+
+        <button class="category">
+            Casual
+        </button>
+
+    </section>
+
+
+    <!-- =========================================
+         GAMES
+    ========================================== -->
+
+    <main>
+
+        <section
+            id="gamesGrid"
+            class="games-grid"
+        >
+
+            <!--
+                Game cards are generated
+                automatically by app.js.
+            -->
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Pablo's Arcade
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================
+         TOAST
+    ========================================== -->
+
+    <div id="toast"></div>
+
+
+    <!-- =========================================
+         MAIN JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/storage.js"></script>
+
+    <script src="js/search.js"></script>
+
+    <script src="js/ui.js"></script>
+
+    <script src="js/app.js"></script>
+
+
+    <!-- =========================================
+         ARCADE REWARD SYSTEM
+    ========================================== -->
+
+    <script>
+
+        /*
+        ==========================================
+        PABLO'S ARCADE
+        RETURN REWARD SYSTEM
+
+        When a player enters a game, we remember
+        which game they opened.
+
+        When they return to the arcade homepage,
+        they receive a reward.
+
+        This means the individual games don't
+        need to be modified.
+        ==========================================
+        */
+
+
+        const RETURN_GAME_KEY =
+            "PablosArcadePendingGame";
+
+
+        const RETURN_REWARD_KEY =
+            "PablosArcadeRewardClaimed";
+
+
+        /*
+        ==========================================
+        REMEMBER GAME BEFORE OPENING IT
+        ==========================================
+        */
+
+        const arcadeOriginalPlayGame =
+            window.playGame;
+
+
+        window.playGame = function(id){
+
+            /*
+                Save the game the player is entering.
+            */
+
+            localStorage.setItem(
+                RETURN_GAME_KEY,
+                id
+            );
+
+
+            /*
+                Continue with the normal
+                Pablo's Arcade playGame().
+            */
+
+            arcadeOriginalPlayGame(id);
+
+        };
+
+
+        /*
+        ==========================================
+        REWARD WHEN RETURNING
+        ==========================================
+        */
+
+        function checkGameReturnReward(){
+
+            const gameId =
+                localStorage.getItem(
+                    RETURN_GAME_KEY
+                );
+
+
+            /*
+                No previous game.
+            */
+
+            if(!gameId){
+
+                return;
+
+            }
+
+
+            /*
+                Find the game information.
+            */
+
+            const game =
+                games.find(
+                    g => g.id === gameId
+                );
+
+
+            /*
+                Remove pending game immediately.
+
+                This is important because the reward
+                must only be claimed once.
+            */
+
+            localStorage.removeItem(
+                RETURN_GAME_KEY
+            );
+
+
+            /*
+                Give reward.
+
+                Existing app.js already gives:
+                    +5 coins
+                    +20 XP
+
+                when Play is pressed.
+
+                Here we add:
+                    +10 coins
+                    +10 XP
+            */
+
+            addCoins(10);
+
+            addXP(10);
+
+
+            /*
+                Check achievements again.
+            */
+
+            checkAchievements();
+
+
+            /*
+                Show notification.
+            */
+
+            if(game){
+
+                showNotification(
+                    "🎮 " +
+                    game.title +
+                    " completed! +10 🪙 +10 XP"
+                );
+
+            }else{
+
+                showNotification(
+                    "🎮 Game completed! +10 🪙 +10 XP"
+                );
+
+            }
+
+        }
+
+
+        /*
+        ==========================================
+        RUN AFTER PAGE LOAD
+        ==========================================
+        */
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                /*
+                    Small delay so all player data
+                    is completely loaded first.
+                */
+
+                setTimeout(
+                    checkGameReturnReward,
+                    300
+                );
+
+            }
+        );
+
+
+        /*
+        ==========================================
+        SHOW CURRENT COINS IN CONSOLE
+        ==========================================
+        */
+
+        function showArcadeCurrency(){
+
+            if(typeof getPlayer !== "function"){
+
+                return;
+
+            }
+
+
+            const currentPlayer =
+                getPlayer();
+
+
+            console.log(
+                "🪙 Coins:",
+                currentPlayer.coins
+            );
+
+
+            console.log(
+                "⭐ Level:",
+                currentPlayer.level
+            );
+
+
+            console.log(
+                "✨ XP:",
+                currentPlayer.xp
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        DEBUG
+        ==========================================
+        */
+
+        showArcadeCurrency();
+
+    </script>
+
+
+</body>
+
+</html>
