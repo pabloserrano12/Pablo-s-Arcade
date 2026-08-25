@@ -1,0 +1,1143 @@
+/* =========================================
+   PIXEL ARCADE
+   ANIMATIONS.CSS
+=========================================*/
+
+/* Fade */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* Fade + subir */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Zoom */
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Rotación */
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* Rebote */
+
+@keyframes bounce{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    30%{
+
+        transform:translateY(-15px);
+
+    }
+
+    60%{
+
+        transform:translateY(5px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Pulso */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Glow */
+
+@keyframes glow{
+
+    0%{
+
+        box-shadow:0 0 0 rgba(91,95,255,0);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 35px rgba(91,95,255,.5);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 rgba(91,95,255,0);
+
+    }
+
+}
+
+/* Flotar */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* Girar */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* Brillo */
+
+@keyframes shine{
+
+    from{
+
+        background-position:-250px;
+
+    }
+
+    to{
+
+        background-position:450px;
+
+    }
+
+}
+
+/* Aparecer */
+
+.fade-in{
+
+    animation:fadeIn .6s;
+
+}
+
+.fade-up{
+
+    animation:fadeUp .6s;
+
+}
+
+.zoom-in{
+
+    animation:zoomIn .45s;
+
+}
+
+.bounce{
+
+    animation:bounce .8s;
+
+}
+
+.pulse{
+
+    animation:pulse 1.4s infinite;
+
+}
+
+.glow{
+
+    animation:glow 2s infinite;
+
+}
+
+.floating{
+
+    animation:floating 3s ease-in-out infinite;
+
+}
+
+.spin{
+
+    animation:spin 1s linear infinite;
+
+}
+/* =========================================
+   SLIDE ANIMATIONS
+=========================================*/
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.slide-left{
+
+    animation:slideLeft .6s ease;
+
+}
+
+.slide-right{
+
+    animation:slideRight .6s ease;
+
+}
+
+.slide-down{
+
+    animation:slideDown .6s ease;
+
+}
+
+/* =========================================
+   SCALE
+=========================================*/
+
+@keyframes scaleUp{
+
+    from{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes scaleDown{
+
+    from{
+
+        transform:scale(1.2);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.scale-up{
+
+    animation:scaleUp .45s ease;
+
+}
+
+.scale-down{
+
+    animation:scaleDown .45s ease;
+
+}
+
+/* =========================================
+   SHAKE
+=========================================*/
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    20%{transform:translateX(-8px);}
+    40%{transform:translateX(8px);}
+    60%{transform:translateX(-6px);}
+    80%{transform:translateX(6px);}
+    100%{transform:translateX(0);}
+
+}
+
+.shake{
+
+    animation:shake .45s;
+
+}
+
+/* =========================================
+   HEARTBEAT
+=========================================*/
+
+@keyframes heartbeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    20%{
+
+        transform:scale(1.15);
+
+    }
+
+    40%{
+
+        transform:scale(.95);
+
+    }
+
+    60%{
+
+        transform:scale(1.1);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.heartbeat{
+
+    animation:heartbeat .9s;
+
+}
+
+/* =========================================
+   ROTATE HOVER
+=========================================*/
+
+.rotate-hover:hover{
+
+    animation:rotate .8s linear;
+
+}
+
+/* =========================================
+   FLOAT HOVER
+=========================================*/
+
+.float-hover:hover{
+
+    animation:floating 1.2s ease-in-out;
+
+}
+
+/* =========================================
+   GLOW HOVER
+=========================================*/
+
+.glow-hover:hover{
+
+    animation:glow 1.2s;
+
+}
+
+/* =========================================
+   BUTTON PRESS
+=========================================*/
+
+.button-press{
+
+    transition:.15s;
+
+}
+
+.button-press:active{
+
+    transform:scale(.95);
+
+}
+
+/* =========================================
+   DELAYS
+=========================================*/
+
+.delay-1{
+
+    animation-delay:.1s;
+
+}
+/* =========================================
+   DELAYS
+.delay-2{
+
+    animation-delay:.2s;
+
+}
+
+.delay-3{
+
+    animation-delay:.3s;
+
+}
+
+.delay-4{
+
+    animation-delay:.4s;
+
+}
+
+.delay-5{
+
+    animation-delay:.5s;
+
+}
+/* =========================================
+   BLINK
+=========================================*/
+
+@keyframes blink{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.15;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+
+.blink{
+
+    animation:blink 1s infinite;
+
+}
+
+/* =========================================
+   WIGGLE
+=========================================*/
+
+@keyframes wiggle{
+
+    0%{
+
+        transform:rotate(0deg);
+
+    }
+
+    25%{
+
+        transform:rotate(4deg);
+
+    }
+
+    50%{
+
+        transform:rotate(-4deg);
+
+    }
+
+    75%{
+
+        transform:rotate(2deg);
+
+    }
+
+    100%{
+
+        transform:rotate(0deg);
+
+    }
+
+}
+
+.wiggle{
+
+    animation:wiggle .5s;
+
+}
+
+/* =========================================
+   FLIP
+=========================================*/
+
+@keyframes flip{
+
+    from{
+
+        transform:rotateY(90deg);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:rotateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+.flip{
+
+    animation:flip .6s ease;
+
+    transform-style:preserve-3d;
+
+}
+
+/* =========================================
+   POP
+=========================================*/
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.7);
+
+        opacity:0;
+
+    }
+
+    80%{
+
+        transform:scale(1.08);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.pop{
+
+    animation:pop .4s ease;
+
+}
+
+/* =========================================
+   RIPPLE
+=========================================*/
+
+@keyframes ripple{
+
+    from{
+
+        transform:scale(0);
+
+        opacity:.6;
+
+    }
+
+    to{
+
+        transform:scale(4);
+
+        opacity:0;
+
+    }
+
+}
+
+.ripple{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.ripple::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:scale(0);
+
+    opacity:0;
+
+}
+
+.ripple:active::after{
+
+    animation:ripple .5s ease-out;
+
+}
+
+/* =========================================
+   HOVER EFFECTS
+=========================================*/
+
+.hover-grow{
+
+    transition:.25s;
+
+}
+
+.hover-grow:hover{
+
+    transform:scale(1.05);
+
+}
+
+.hover-lift{
+
+    transition:.25s;
+
+}
+
+.hover-lift:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.hover-rotate{
+
+    transition:.25s;
+
+}
+
+.hover-rotate:hover{
+
+    transform:rotate(3deg);
+
+}
+
+.hover-bright{
+
+    transition:.25s;
+
+}
+
+.hover-bright:hover{
+
+    filter:brightness(1.15);
+
+}
+
+.hover-shadow{
+
+    transition:.25s;
+
+}
+
+.hover-shadow:hover{
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+/* =========================================
+   OPACITY
+=========================================*/
+
+.opacity-0{
+
+    opacity:0;
+
+}
+
+.opacity-25{
+
+    opacity:.25;
+
+}
+
+.opacity-50{
+
+    opacity:.5;
+
+}
+
+.opacity-75{
+
+    opacity:.75;
+
+}
+
+.opacity-100{
+
+    opacity:1;
+
+}
+
+/* =========================================
+   DURATIONS
+=========================================*/
+
+.fast{
+
+    animation-duration:.2s;
+
+}
+
+.normal{
+
+    animation-duration:.5s;
+
+}
+
+.slow{
+
+    animation-duration:1s;
+
+}
+
+.very-slow{
+
+    animation-duration:2s;
+
+}
+
+/* =========================================
+   INFINITE
+=========================================*/
+
+.infinite{
+
+    animation-iteration-count:infinite;
+
+}
+
+.once{
+
+    animation-iteration-count:1;
+
+}
+/* =========================================
+   CARD EFFECTS
+=========================================*/
+
+.game-card{
+
+    animation:fadeUp .5s ease;
+
+}
+
+.game-card:hover .game-image img{
+
+    animation:pulse .5s;
+
+}
+
+.game-card:hover .game-title{
+
+    animation:glow 1s;
+
+}
+
+/* =========================================
+   TOAST
+=========================================*/
+
+#toast.show{
+
+    animation:
+
+        fadeUp .35s ease,
+
+        pulse .4s;
+
+}
+
+/* =========================================
+   LOADER
+=========================================*/
+
+.loader{
+
+    animation:fadeIn .4s;
+
+}
+
+.spinner{
+
+    animation:spin 1s linear infinite;
+
+}
+
+/* =========================================
+   MODAL
+=========================================*/
+
+.modal.active .modal-content{
+
+    animation:zoomIn .3s ease;
+
+}
+
+/* =========================================
+   BUTTONS
+=========================================*/
+
+button{
+
+    transition:
+
+        transform .2s,
+
+        filter .2s,
+
+        background .2s,
+
+        color .2s,
+
+        box-shadow .2s;
+
+}
+
+button:hover{
+
+    filter:brightness(1.05);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/* =========================================
+   LINKS
+=========================================*/
+
+a{
+
+    transition:.25s;
+
+}
+
+a:hover{
+
+    opacity:.85;
+
+}
+
+/* =========================================
+   INPUTS
+=========================================*/
+
+input{
+
+    transition:
+
+        border .25s,
+
+        box-shadow .25s,
+
+        transform .25s;
+
+}
+
+input:focus{
+
+    box-shadow:
+
+        0 0 20px rgba(91,95,255,.35);
+
+}
+
+/* =========================================
+   IMAGES
+=========================================*/
+
+img{
+
+    transition:
+
+        transform .35s,
+
+        filter .35s;
+
+}
+
+img:hover{
+
+    filter:brightness(1.05);
+
+}
+
+/* =========================================
+   ACHIEVEMENT
+=========================================*/
+
+.achievement-unlocked{
+
+    animation:
+
+        pop .5s,
+
+        glow 2s;
+
+}
+
+/* =========================================
+   XP
+=========================================*/
+
+.xp-animation{
+
+    animation:
+
+        bounce .8s;
+
+}
+
+/* =========================================
+   COINS
+=========================================*/
+
+.coin-animation{
+
+    animation:
+
+        spin .6s,
+
+        pulse .6s;
+
+}
+
+/* =========================================
+   PAGE TRANSITIONS
+=========================================*/
+
+body{
+
+    animation:fadeIn .35s;
+
+}
+
+main{
+
+    animation:fadeUp .5s ease;
+
+}
+
+/* =========================================
+   DISABLE ANIMATIONS
+=========================================*/
+
+.no-animation,
+
+.no-animation *{
+
+    animation:none !important;
+
+    transition:none !important;
+
+}
+
+/* =========================================
+   REDUCED MOTION
+=========================================*/
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* =========================================
+   END OF FILE
+=========================================*/

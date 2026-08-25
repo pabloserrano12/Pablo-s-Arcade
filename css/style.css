@@ -1,0 +1,1543 @@
+/* =========================================
+   PIXEL ARCADE
+   CSS PRINCIPAL
+=========================================*/
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+/* Contenedor */
+
+.container{
+
+    width:min(92%,1400px);
+
+    margin:auto;
+
+}
+
+/* Fondo */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+
+    radial-gradient(circle at top left,#5b5fff22,transparent 35%),
+
+    radial-gradient(circle at bottom right,#00d9ff18,transparent 35%),
+
+    linear-gradient(180deg,#0d1117,#151b25);
+
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+
+    width:12px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--secondary);
+
+}
+
+/* Navbar */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    width:100%;
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 50px;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(13,17,23,.65);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:1.7rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    transition:.25s;
+
+}
+
+nav a:hover{
+
+    background:var(--gradient);
+
+}
+
+/* Hero */
+
+.hero{
+
+    min-height:70vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.hero h1{
+
+    font-size:4rem;
+
+    margin-bottom:20px;
+
+    background:var(--gradient2);
+
+    background-clip:text;
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    color:var(--text2);
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    font-size:1.15rem;
+
+}
+
+/* Buscador */
+
+#search{
+
+    width:min(700px,90%);
+
+    padding:18px 25px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    background:var(--card);
+
+    color:white;
+
+    font-size:1rem;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+#search:focus{
+
+    transform:scale(1.02);
+
+    border:1px solid var(--accent);
+
+}
+
+/* Categorías */
+
+.categories{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:40px;
+
+}
+
+.category{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:14px 22px;
+
+    border-radius:50px;
+
+    background:var(--card);
+
+    color:white;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.category:hover{
+
+    transform:translateY(-3px);
+
+    background:var(--gradient);
+
+}
+
+.category.active{
+
+    background:var(--gradient);
+
+}/* =========================================
+   GAMES GRID
+=========================================*/
+
+main{
+
+    width:min(95%,1400px);
+
+    margin:auto;
+
+    padding:60px 0;
+
+}
+
+.games-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+/* =========================================
+   GAME CARD
+=========================================*/
+
+.game-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    transition:all .35s ease;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow-small);
+
+}
+
+.game-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,.45);
+
+}
+
+.game-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(91,95,255,.15),
+
+        rgba(0,217,255,.05)
+
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.game-card:hover::before{
+
+    opacity:1;
+
+}
+
+/* Imagen */
+
+.game-image{
+
+    width:100%;
+
+    height:180px;
+
+    overflow:hidden;
+
+    background:#111;
+
+}
+
+.game-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.game-card:hover .game-image img{
+
+    transform:scale(1.08);
+
+}
+
+/* Información */
+
+.game-info{
+
+    padding:22px;
+
+}
+
+.game-title{
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.game-description{
+
+    color:var(--text2);
+
+    line-height:1.6;
+
+    margin-bottom:18px;
+
+    min-height:60px;
+
+}
+
+/* Etiquetas */
+
+.game-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.tag{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    color:var(--text2);
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+/* =========================================
+   BOTÓN JUGAR
+=========================================*/
+
+.play-button{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:var(--gradient);
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.play-button:hover{
+
+    transform:translateY(-3px);
+
+    filter:brightness(1.08);
+
+}
+
+.play-button:active{
+
+    transform:scale(.98);
+
+}
+
+/* =========================================
+   BADGES
+=========================================*/
+
+.badge{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    padding:7px 12px;
+
+    border-radius:50px;
+
+    background:rgba(0,0,0,.7);
+
+    backdrop-filter:blur(8px);
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    z-index:5;
+
+}
+
+.badge.new{
+
+    background:#2ecc71;
+
+}
+
+.badge.hot{
+
+    background:#ff4757;
+
+}
+
+.badge.popular{
+
+    background:#f39c12;
+
+}
+
+/* =========================================
+   FAVORITO
+=========================================*/
+
+.favorite{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(8px);
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+    z-index:5;
+
+}
+
+.favorite:hover{
+
+    transform:scale(1.15);
+
+}
+
+.favorite.active{
+
+    color:#ff4b6e;
+
+}
+
+/* =========================================
+   SECCIÓN
+=========================================*/
+
+.section-title{
+
+    font-size:2rem;
+
+    margin-bottom:35px;
+
+    font-weight:700;
+
+}
+
+.section-description{
+
+    color:var(--text2);
+
+    margin-bottom:40px;
+
+}
+/* =========================================
+   FOOTER
+=========================================*/
+
+footer{
+
+    margin-top:80px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.03);
+
+    border-top:1px solid var(--border);
+
+}
+
+footer p{
+
+    color:var(--text3);
+
+    font-size:.95rem;
+
+}
+
+/* =========================================
+   TOAST
+=========================================*/
+
+#toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    min-width:280px;
+
+    max-width:380px;
+
+    padding:18px 24px;
+
+    background:var(--card);
+
+    color:white;
+
+    border-left:5px solid var(--accent);
+
+    border-radius:16px;
+
+    box-shadow:var(--shadow);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:translateY(30px);
+
+    transition:.35s;
+
+    z-index:9999;
+
+}
+
+#toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* =========================================
+   LOADER
+=========================================*/
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--bg);
+
+    z-index:99999;
+
+}
+
+.spinner{
+
+    width:70px;
+
+    height:70px;
+
+    border:6px solid rgba(255,255,255,.12);
+
+    border-top:6px solid var(--accent);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+/* =========================================
+   MODAL
+=========================================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(10px);
+
+    z-index:9998;
+
+}
+
+.modal.active{
+
+    display:flex;
+
+}
+
+.modal-content{
+
+    width:min(92%,700px);
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+.modal-title{
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+}
+
+.modal-close{
+
+    float:right;
+
+    cursor:pointer;
+
+    font-size:1.4rem;
+
+}
+
+/* =========================================
+   PANEL
+=========================================*/
+
+.panel{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-small);
+
+}
+
+.panel h2{
+
+    margin-bottom:20px;
+
+}
+
+/* =========================================
+   PERFIL
+=========================================*/
+
+.profile-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+.avatar{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:var(--gradient);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:3rem;
+
+    font-weight:bold;
+
+}
+
+.profile-info h2{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.profile-info p{
+
+    color:var(--text2);
+
+}
+
+/* =========================================
+   BARRA DE EXPERIENCIA
+=========================================*/
+
+.level-bar{
+
+    width:100%;
+
+    height:18px;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#222;
+
+    margin-top:20px;
+
+}
+
+.level-progress{
+
+    height:100%;
+
+    width:40%;
+
+    background:var(--gradient);
+
+    border-radius:50px;
+
+}
+
+/* =========================================
+   ESTADÍSTICAS
+=========================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.stat-card{
+
+    padding:25px;
+
+    background:var(--card);
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    text-align:center;
+
+}
+
+.stat-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card span{
+
+    color:var(--text2);
+
+}
+
+/* =========================================
+   TIENDA
+=========================================*/
+
+.shop-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.shop-item{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    transition:.3s;
+
+}
+
+.shop-item:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.shop-image{
+
+    height:170px;
+
+    background:#222;
+
+}
+
+.shop-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.shop-info{
+
+    padding:20px;
+
+}
+
+.price{
+
+    font-weight:bold;
+
+    color:var(--warning);
+
+    margin:15px 0;
+
+}
+
+.buy-button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:var(--gradient);
+
+    color:white;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.buy-button:hover{
+
+    transform:translateY(-2px);
+
+}
+/* =========================================
+   LOGROS
+=========================================*/
+
+.achievements-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+
+}
+
+.achievement-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:22px;
+
+    transition:.3s;
+
+}
+
+.achievement-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.achievement-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:2rem;
+
+    background:var(--gradient);
+
+    margin-bottom:18px;
+
+}
+
+.achievement-card.locked{
+
+    opacity:.45;
+
+    filter:grayscale(1);
+
+}
+
+/* =========================================
+   RANKING
+=========================================*/
+
+.ranking{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:30px;
+
+}
+
+.ranking th{
+
+    background:rgba(255,255,255,.06);
+
+    padding:18px;
+
+    text-align:left;
+
+}
+
+.ranking td{
+
+    padding:16px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.ranking tr:hover{
+
+    background:rgba(255,255,255,.04);
+
+}
+
+/* =========================================
+   AJUSTES
+=========================================*/
+
+.settings-group{
+
+    margin-bottom:35px;
+
+}
+
+.settings-group h3{
+
+    margin-bottom:20px;
+
+}
+
+.setting{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+/* Switch */
+
+.switch{
+
+    position:relative;
+
+    width:60px;
+
+    height:32px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50px;
+
+    background:#444;
+
+    transition:.3s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    left:4px;
+
+    top:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.switch input:checked + .slider{
+
+    background:var(--primary);
+
+}
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(28px);
+
+}
+
+/* =========================================
+   PANTALLA DE JUEGO
+=========================================*/
+
+.game-container{
+
+    width:min(95%,1100px);
+
+    margin:50px auto;
+
+}
+
+.game-toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+.game-toolbar h2{
+
+    font-size:2rem;
+
+}
+
+.toolbar-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.toolbar-buttons button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:var(--gradient);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.toolbar-buttons button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Canvas */
+
+.game-screen{
+
+    background:#000;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:2px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+canvas{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+}
+
+/* =========================================
+   CONTROLES MÓVILES
+=========================================*/
+
+.mobile-controls{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,80px);
+
+    gap:15px;
+
+    justify-content:center;
+
+    margin:35px auto;
+
+}
+
+.mobile-controls button{
+
+    width:80px;
+
+    height:80px;
+
+    border:none;
+
+    border-radius:20px;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:var(--gradient);
+
+    transition:.2s;
+
+    user-select:none;
+
+}
+
+.mobile-controls button:active{
+
+    transform:scale(.94);
+
+}
+
+.mobile-wide{
+
+    width:100%;
+
+    max-width:350px;
+
+    margin:auto;
+
+}
+
+.mobile-wide button{
+
+    width:100%;
+
+    padding:20px;
+
+    font-size:1.3rem;
+
+}
+
+/* =========================================
+   BARRA DE PROGRESO
+=========================================*/
+
+.progress{
+
+    width:100%;
+
+    height:14px;
+
+    background:#222;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.progress div{
+
+    height:100%;
+
+    width:0;
+
+    background:var(--gradient);
+
+}
+
+/* =========================================
+   BADGES DE NIVEL
+=========================================*/
+
+.level-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 15px;
+
+    border-radius:50px;
+
+    background:var(--gradient);
+
+    font-weight:700;
+
+}
+
+/* =========================================
+   UTILIDADES
+=========================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
+.mt-5{margin-top:50px;}
+
+.mb-1{margin-bottom:10px;}
+.mb-2{margin-bottom:20px;}
+.mb-3{margin-bottom:30px;}
+.mb-4{margin-bottom:40px;}
+.mb-5{margin-bottom:50px;}
+
+.p-1{padding:10px;}
+.p-2{padding:20px;}
+.p-3{padding:30px;}
+
+.round{
+
+    border-radius:50%;
+
+}
+
+.shadow{
+
+    box-shadow:var(--shadow);
+
+}
+
+/* =========================================
+   FIN DEL STYLE.CSS
+=========================================*/
+/* =========================================
+   FIX GAME CARD CLICK / HOVER
+=========================================*/
+
+.game-card::before{
+    pointer-events:none;
+}
+
+.play-button{
+    position:relative;
+    z-index:10;
+}
+
+.favorite{
+    pointer-events:auto;
+}
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+}

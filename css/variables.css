@@ -1,0 +1,73 @@
+:root{
+
+    /* Colores principales */
+
+    --primary:#5B5FFF;
+    --secondary:#7B2EFF;
+    --accent:#00D9FF;
+
+    --success:#36D47A;
+    --warning:#FFC857;
+    --danger:#FF5D73;
+
+    /* Fondo */
+
+    --bg:#0D1117;
+    --bg2:#151B25;
+    --card:#1C2430;
+
+    /* Texto */
+
+    --text:#FFFFFF;
+    --text2:#C7D0DB;
+    --text3:#8893A5;
+
+    /* Bordes */
+
+    --border:rgba(255,255,255,.08);
+
+    /* Sombras */
+
+    --shadow-small:0 5px 15px rgba(0,0,0,.25);
+
+    --shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+    /* Gradientes */
+
+    --gradient:
+
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    --gradient2:
+
+    linear-gradient(
+        135deg,
+        var(--secondary),
+        var(--accent)
+    );
+
+    /* Radios */
+
+    --radius:18px;
+
+    --radius-small:10px;
+
+    --radius-big:28px;
+
+    /* Transiciones */
+
+    --transition:.25s ease;
+
+    /* Tamaños */
+
+    --navbar-height:80px;
+
+    --container:1400px;
+
+}
