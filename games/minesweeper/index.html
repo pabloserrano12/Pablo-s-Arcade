@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Minesweeper | Pablo's Arcade</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+<div class="game-container">
+
+    <header>
+
+        <button id="backButton">
+            ⬅ Back
+        </button>
+
+        <h1>
+            💣 Minesweeper
+        </h1>
+
+        <div class="stats">
+
+            <div>
+
+                Mines
+
+                <span id="mines">
+                    10
+                </span>
+
+            </div>
+
+            <div>
+
+                Time
+
+                <span id="time">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div
+            id="board"
+            class="board">
+        </div>
+
+        <p id="message">
+            Find all the mines!
+        </p>
+
+    </main>
+
+    <footer>
+
+        <button id="startButton">
+            ▶ Start
+        </button>
+
+        <button id="restartButton">
+            🔄 Restart
+        </button>
+
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

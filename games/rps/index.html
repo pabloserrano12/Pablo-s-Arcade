@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Rock Paper Scissors | Pablo's Arcade</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+<div class="game-container">
+
+<header>
+
+    <button id="backButton">
+
+        ⬅ Back
+
+    </button>
+
+    <h1>
+
+        ✊ Rock Paper Scissors
+
+    </h1>
+
+    <div class="stats">
+
+        <div>
+
+            Wins
+
+            <span id="wins">
+
+                0
+
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main>
+
+<div class="choices">
+
+<button class="choice" data-choice="rock">
+
+✊
+
+</button>
+
+<button class="choice" data-choice="paper">
+
+✋
+
+</button>
+
+<button class="choice" data-choice="scissors">
+
+✌️
+
+</button>
+
+</div>
+
+<div class="result">
+
+<p>
+
+You
+
+<span id="playerChoice">
+
+❔
+
+</span>
+
+</p>
+
+<p>
+
+CPU
+
+<span id="cpuChoice">
+
+❔
+
+</span>
+
+</p>
+
+<h2 id="resultText">
+
+Choose one!
+
+</h2>
+
+</div>
+
+</main>
+
+<footer>
+
+<button id="restartButton">
+
+🔄 Reset
+
+</button>
+
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

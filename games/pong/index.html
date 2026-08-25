@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Pong | Pablo's Arcade</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="menu" class="menu">
+
+    <h1>🏓 Pong</h1>
+
+    <p>Select a game mode</p>
+
+    <button id="vsAI">
+
+        Play vs AI
+
+    </button>
+
+    <button id="vsPlayer">
+
+        Two Players
+
+    </button>
+
+</div>
+
+<div id="game" class="game hidden">
+
+<header>
+
+<button id="backButton">
+
+⬅ Back
+
+</button>
+
+<h2>
+
+🏓 Pong
+
+</h2>
+
+<div class="scoreboard">
+
+<span id="leftScore">
+
+0
+
+</span>
+
+:
+
+<span id="rightScore">
+
+0
+
+</span>
+
+</div>
+
+</header>
+
+<main>
+
+<canvas
+
+id="gameCanvas"
+
+width="900"
+
+height="500">
+
+</canvas>
+
+</main>
+
+<section class="mobileControls">
+
+<div class="leftControls">
+
+<button id="leftUp">
+
+▲
+
+</button>
+
+<button id="leftDown">
+
+▼
+
+</button>
+
+</div>
+
+<div class="rightControls">
+
+<button id="rightUp">
+
+▲
+
+</button>
+
+<button id="rightDown">
+
+▼
+
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<button id="pauseButton">
+
+⏸ Pause
+
+</button>
+
+<button id="restartButton">
+
+🔄 Restart
+
+</button>
+
+<button id="menuButton">
+
+🏠 Menu
+
+</button>
+
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

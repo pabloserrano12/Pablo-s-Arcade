@@ -1,0 +1,240 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111827;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/*=========================
+MENU
+=========================*/
+
+.menu{
+    width:100%;
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    background:#1f2937;
+    padding:40px;
+    border-radius:20px;
+    border:3px solid #3b82f6;
+}
+
+.menu h1{
+    font-size:3rem;
+}
+
+.menu button{
+    width:100%;
+}
+
+/*=========================
+GAME
+=========================*/
+
+.game{
+    width:100%;
+    max-width:900px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.stats{
+    display:flex;
+    gap:15px;
+}
+
+.stats div{
+    background:#1f2937;
+    padding:10px 18px;
+    border-radius:12px;
+    text-align:center;
+    min-width:90px;
+    font-weight:bold;
+}
+
+.stats span{
+    display:block;
+    margin-top:5px;
+    font-size:1.2rem;
+}
+
+main{
+    display:flex;
+    justify-content:center;
+}
+
+/*=========================
+BOARD
+=========================*/
+
+.board{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,70px);
+
+    grid-template-rows:repeat(6,70px);
+
+    gap:8px;
+
+    background:#2563eb;
+
+    padding:12px;
+
+    border-radius:16px;
+
+}
+
+.cell{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.cell:hover{
+
+    transform:scale(1.05);
+
+}
+
+.red{
+
+    background:#ef4444;
+
+}
+
+.yellow{
+
+    background:#facc15;
+
+}
+
+/*=========================
+BUTTONS
+=========================*/
+
+button{
+    border:none;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    padding:14px 22px;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:bold;
+    transition:.2s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+#backButton,
+#menuButton{
+    background:#374151;
+}
+
+#backButton:hover,
+#menuButton:hover{
+    background:#4b5563;
+}
+
+footer{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+/*=========================
+RESPONSIVE
+=========================*/
+
+@media(max-width:650px){
+
+    header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .board{
+
+        grid-template-columns:repeat(7,48px);
+
+        grid-template-rows:repeat(6,48px);
+
+        gap:5px;
+
+    }
+
+    .cell{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+}
+
+@media(max-width:420px){
+
+    .board{
+
+        grid-template-columns:repeat(7,40px);
+
+        grid-template-rows:repeat(6,40px);
+
+    }
+
+    .cell{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Tetris | Pablo's Arcade</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="game-container">
+
+    <header>
+
+        <button id="backButton">
+
+            ⬅ Back
+
+        </button>
+
+        <h1>
+
+            🧩 Tetris
+
+        </h1>
+
+        <div class="stats">
+
+            <div>
+
+                Score
+
+                <span id="score">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div>
+
+                Level
+
+                <span id="level">
+
+                    1
+
+                </span>
+
+            </div>
+
+            <div>
+
+                Lines
+
+                <span id="lines">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <canvas
+
+            id="board"
+
+            width="300"
+
+            height="600">
+
+        </canvas>
+
+    </main>
+
+    <section class="mobile-controls">
+
+        <button id="left">
+
+            ◀
+
+        </button>
+
+        <button id="rotate">
+
+            🔄
+
+        </button>
+
+        <button id="right">
+
+            ▶
+
+        </button>
+
+        <button id="down">
+
+            ▼
+
+        </button>
+
+    </section>
+
+    <footer>
+
+        <button id="pause">
+
+            ⏸ Pause
+
+        </button>
+
+        <button id="restart">
+
+            🔄 Restart
+
+        </button>
+
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

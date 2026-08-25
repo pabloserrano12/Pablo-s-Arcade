@@ -1,0 +1,226 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111827;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* ==========================
+   MENU
+========================== */
+
+.menu{
+    width:100%;
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    background:#1f2937;
+    padding:40px;
+    border-radius:20px;
+    border:3px solid #3b82f6;
+    box-shadow:0 0 25px rgba(0,0,0,.4);
+}
+
+.menu h1{
+    font-size:3rem;
+}
+
+.menu p{
+    color:#cbd5e1;
+    font-size:1.1rem;
+}
+
+.menu button{
+    width:100%;
+}
+
+/* ==========================
+   GAME
+========================== */
+
+.game{
+    width:100%;
+    max-width:1050px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.scoreboard{
+    font-size:2rem;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+main{
+    display:flex;
+    justify-content:center;
+}
+
+canvas{
+    width:100%;
+    max-width:900px;
+    background:#000;
+    border:4px solid #3b82f6;
+    border-radius:16px;
+    display:block;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+button{
+    border:none;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    padding:14px 22px;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:bold;
+    transition:.2s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+#backButton,
+#menuButton{
+    background:#374151;
+}
+
+#backButton:hover,
+#menuButton:hover{
+    background:#4b5563;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+/* ==========================
+   MOBILE CONTROLS
+========================== */
+
+.mobileControls{
+    display:none;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.leftControls,
+.rightControls{
+    display:flex;
+    gap:15px;
+}
+
+.mobileControls button{
+    width:75px;
+    height:75px;
+    font-size:2rem;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    .mobileControls{
+
+        display:flex;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    footer{
+
+        flex-direction:column;
+
+    }
+
+    footer button{
+
+        width:100%;
+
+    }
+
+    .mobileControls{
+
+        gap:20px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .menu{
+
+        padding:25px;
+
+    }
+
+    .menu h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .mobileControls{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+}
