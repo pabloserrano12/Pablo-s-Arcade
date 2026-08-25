@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Achievements | Pablo's Arcade</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<div id="background"></div>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header>
+
+    <div class="logo">
+        🎮 Pablo's Arcade
+    </div>
+
+    <nav>
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="achievements.html">
+            Achievements
+        </a>
+
+        <a href="settings.html">
+            Settings
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+<section class="game-container">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="game-toolbar">
+
+        <h2>
+            🏆 Achievements
+        </h2>
+
+        <div class="toolbar-buttons">
+
+            <button
+                onclick="location.href='../index.html'">
+
+                ⬅ Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         PROGRESS
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="
+            margin-bottom:30px;
+            text-align:center;
+        ">
+
+        <h2>
+            Your Progress
+        </h2>
+
+
+        <div
+            id="progressText"
+            style="
+                font-size:2rem;
+                font-weight:700;
+                margin-top:15px;
+            ">
+
+            0 / 0
+
+        </div>
+
+
+        <p
+            class="section-description"
+            style="
+                margin-bottom:15px;
+            ">
+
+            Achievements unlocked
+
+        </p>
+
+
+        <div class="progress">
+
+            <div
+                id="achievementProgress"
+                style="
+                    width:0%;
+                ">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FILTERS
+    ====================================== -->
+
+    <section class="categories">
+
+        <button
+            class="category active"
+            data-filter="all">
+
+            All
+
+        </button>
+
+
+        <button
+            class="category"
+            data-filter="unlocked">
+
+            Unlocked
+
+        </button>
+
+
+        <button
+            class="category"
+            data-filter="locked">
+
+            Locked
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         ACHIEVEMENTS
+    ====================================== -->
+
+    <section>
+
+        <div
+            id="achievementsGrid"
+            class="achievements-grid">
+
+        </div>
+
+    </section>
+
+
+</section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 Pablo's Arcade
+    </p>
+
+</footer>
+
+
+<!-- =========================================
+     TOAST
+========================================= -->
+
+<div id="toast"></div>
+
+
+<!-- =========================================
+     APP JS
+========================================= -->
+
+<script src="../js/app.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =========================================
+   EXTRA ACHIEVEMENT DATA
+========================================= */
+
+const achievementDetails = {
+
+    first_game: {
+
+        icon: "🎮",
+
+        reward: "10 🪙",
+
+        requirement: "Play your first game."
+
+    },
+
+
+    ten_games: {
+
+        icon: "🔥",
+
+        reward: "25 🪙",
+
+        requirement: "Play 10 games."
+
+    },
+
+
+    level5: {
+
+        icon: "⭐",
+
+        reward: "50 🪙",
+
+        requirement: "Reach Level 5."
+
+    },
+
+
+    coins100: {
+
+        icon: "🪙",
+
+        reward: "75 🪙",
+
+        requirement: "Collect 100 coins."
+
+    }
+
+};
+
+
+/* =========================================
+   CURRENT FILTER
+========================================= */
+
+let currentFilter = "all";
+
+
+/* =========================================
+   GET ACHIEVEMENT DETAILS
+========================================= */
+
+function getAchievementDetails(id){
+
+    return achievementDetails[id] || {
+
+        icon: "🏆",
+
+        reward: "Special",
+
+        requirement: "Complete this achievement."
+
+    };
+
+}
+
+
+/* =========================================
+   CREATE CARD
+========================================= */
+
+function createAchievementCard(
+    achievement
+){
+
+    const unlocked =
+        hasAchievement(
+            achievement.id
+        );
+
+
+    const details =
+        getAchievementDetails(
+            achievement.id
+        );
+
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "achievement-card";
+
+
+    if(!unlocked){
+
+        card.classList.add(
+            "locked"
+        );
+
+    }
+
+
+    card.dataset.status =
+        unlocked
+        ? "unlocked"
+        : "locked";
+
+
+    card.innerHTML = `
+
+        <div class="achievement-icon">
+
+            ${
+                unlocked
+                ? details.icon
+                : "🔒"
+            }
+
+        </div>
+
+
+        <h2>
+
+            ${
+                unlocked
+                ? achievement.title
+                : "???"
+            }
+
+        </h2>
+
+
+        <p
+            class="section-description">
+
+            ${
+                unlocked
+                ? achievement.description
+                : "Achievement locked."
+            }
+
+        </p>
+
+
+        <div
+            style="
+                margin-top:15px;
+                padding:10px 14px;
+                border-radius:12px;
+                background:rgba(255,255,255,.06);
+            ">
+
+            ${
+                unlocked
+                ? "🏆 Unlocked"
+                : "🔒 Locked"
+            }
+
+        </div>
+
+
+        <div
+            style="
+                margin-top:12px;
+                color:var(--text2);
+                font-size:.9rem;
+            ">
+
+            ${
+                details.requirement
+            }
+
+        </div>
+
+
+        <div
+            style="
+                margin-top:12px;
+                font-weight:700;
+            ">
+
+            Reward:
+            ${
+                details.reward
+            }
+
+        </div>
+
+    `;
+
+
+    return card;
+
+}
+
+
+/* =========================================
+   RENDER ACHIEVEMENTS
+========================================= */
+
+function renderAchievements(){
+
+    const grid =
+        document.getElementById(
+            "achievementsGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    let visibleAchievements =
+        achievements.filter(
+            achievement => {
+
+                const unlocked =
+                    hasAchievement(
+                        achievement.id
+                    );
+
+
+                if(
+                    currentFilter ===
+                    "unlocked"
+                ){
+
+                    return unlocked;
+
+                }
+
+
+                if(
+                    currentFilter ===
+                    "locked"
+                ){
+
+                    return !unlocked;
+
+                }
+
+
+                return true;
+
+            }
+        );
+
+
+    if(
+        visibleAchievements.length === 0
+    ){
+
+        grid.innerHTML = `
+
+            <div
+                class="panel"
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                ">
+
+                <h2>
+                    ${
+                        currentFilter ===
+                        "unlocked"
+
+                        ? "🏆 No achievements unlocked yet"
+
+                        : "🔒 No locked achievements"
+
+                    }
+                </h2>
+
+                <p
+                    class="section-description">
+
+                    Keep playing to unlock
+                    more achievements!
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    visibleAchievements.forEach(
+        achievement => {
+
+            grid.appendChild(
+
+                createAchievementCard(
+                    achievement
+                )
+
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   UPDATE PROGRESS
+========================================= */
+
+function updateProgress(){
+
+    const total =
+        achievements.length;
+
+
+    const unlocked =
+        achievements.filter(
+            achievement =>
+                hasAchievement(
+                    achievement.id
+                )
+        ).length;
+
+
+    const percentage =
+
+        total === 0
+
+        ? 0
+
+        : (unlocked / total) * 100;
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+
+        unlocked +
+        " / " +
+        total;
+
+
+    document.getElementById(
+        "achievementProgress"
+    ).style.width =
+
+        percentage +
+        "%";
+
+}
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+const filterButtons =
+    document.querySelectorAll(
+        ".category"
+    );
+
+
+filterButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                filterButtons.forEach(
+                    btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    button.dataset.filter;
+
+
+                renderAchievements();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+renderAchievements();
+
+updateProgress();
+
+
+/* =========================================
+   AUTO UPDATE
+========================================= */
+
+setInterval(() => {
+
+    renderAchievements();
+
+    updateProgress();
+
+}, 1000);
+
+</script>
+
+</body>
+
+</html>

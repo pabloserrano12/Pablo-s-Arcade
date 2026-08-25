@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | Pablo's Arcade</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<div id="background"></div>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header>
+
+    <div class="logo">
+        🎮 Pablo's Arcade
+    </div>
+
+    <nav>
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="achievements.html">
+            Achievements
+        </a>
+
+        <a href="settings.html">
+            Settings
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+<section class="game-container">
+
+
+    <!-- =====================================
+         SHOP HEADER
+    ====================================== -->
+
+    <div class="game-toolbar">
+
+        <h2>
+            🛒 Shop
+        </h2>
+
+        <div class="toolbar-buttons">
+
+            <button
+                onclick="location.href='../index.html'">
+
+                ⬅ Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         COINS
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="
+            margin-bottom:30px;
+            text-align:center;
+        ">
+
+        <h2>
+            🪙 Your Coins
+        </h2>
+
+        <div
+            id="coinDisplay"
+            style="
+                font-size:2.5rem;
+                font-weight:700;
+                margin-top:10px;
+            ">
+
+            0 🪙
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         SHOP GRID
+    ====================================== -->
+
+    <section>
+
+        <div
+            id="shopGrid"
+            class="shop-grid">
+
+        </div>
+
+    </section>
+
+
+</section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 Pablo's Arcade
+    </p>
+
+</footer>
+
+
+<!-- =========================================
+     TOAST
+========================================= -->
+
+<div id="toast"></div>
+
+
+<!-- =========================================
+     APP
+========================================= -->
+
+<script src="../js/app.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =========================================
+   SHOP DATABASE
+========================================= */
+
+const shopItems = [
+
+    {
+        id: "neon_theme",
+
+        name: "Neon Theme",
+
+        description:
+            "Give your arcade a futuristic neon look.",
+
+        icon: "⚡",
+
+        price: 50,
+
+        type: "theme"
+    },
+
+
+    {
+        id: "golden_avatar",
+
+        name: "Golden Avatar",
+
+        description:
+            "A special golden avatar for your profile.",
+
+        icon: "👑",
+
+        price: 100,
+
+        type: "avatar"
+    },
+
+
+    {
+        id: "rocket_avatar",
+
+        name: "Rocket Avatar",
+
+        description:
+            "Blast off with this space avatar.",
+
+        icon: "🚀",
+
+        price: 75,
+
+        type: "avatar"
+    },
+
+
+    {
+        id: "shadow_badge",
+
+        name: "Shadow Badge",
+
+        description:
+            "A mysterious badge for elite players.",
+
+        icon: "🕶️",
+
+        price: 175,
+
+        type: "badge"
+    },
+
+
+    {
+        id: "fire_effect",
+
+        name: "Fire Effect",
+
+        description:
+            "Unlock a fiery profile effect.",
+
+        icon: "🔥",
+
+        price: 150,
+
+        type: "effect"
+    },
+
+
+    {
+        id: "diamond_badge",
+
+        name: "Diamond Badge",
+
+        description:
+            "Show everyone that you're an arcade legend.",
+
+        icon: "💎",
+
+        price: 250,
+
+        type: "badge"
+    }
+
+];
+
+
+/* =========================================
+   STORAGE
+========================================= */
+
+const SHOP_STORAGE_KEY =
+    "Pablo'sArcadeShop";
+
+
+const EQUIPPED_STORAGE_KEY =
+    "Pablo'sArcadeEquipped";
+
+
+let ownedItems =
+
+    JSON.parse(
+
+        localStorage.getItem(
+            SHOP_STORAGE_KEY
+        )
+
+    ) || [];
+
+
+let equipped =
+
+    JSON.parse(
+
+        localStorage.getItem(
+            EQUIPPED_STORAGE_KEY
+        )
+
+    ) || {
+
+        avatar: "default",
+
+        badge: "default",
+
+        effect: "default",
+
+        theme: "default"
+
+    };
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+function saveShop(){
+
+    localStorage.setItem(
+
+        SHOP_STORAGE_KEY,
+
+        JSON.stringify(
+            ownedItems
+        )
+
+    );
+
+}
+
+
+function saveEquipped(){
+
+    localStorage.setItem(
+
+        EQUIPPED_STORAGE_KEY,
+
+        JSON.stringify(
+            equipped
+        )
+
+    );
+
+}
+
+
+/* =========================================
+   OWNED
+========================================= */
+
+function isOwned(id){
+
+    return ownedItems.includes(id);
+
+}
+
+
+/* =========================================
+   EQUIPPED
+========================================= */
+
+function isEquipped(item){
+
+    return (
+        equipped[item.type] === item.id
+    );
+
+}
+
+
+/* =========================================
+   BUY
+========================================= */
+
+function buyItem(id){
+
+    const item =
+
+        shopItems.find(
+            item => item.id === id
+        );
+
+
+    if(!item)
+        return;
+
+
+    /* Already owned */
+
+    if(isOwned(id)){
+
+        showNotification(
+            "✅ You already own this item."
+        );
+
+        return;
+
+    }
+
+
+    /* Check coins */
+
+    if(
+        getPlayer().coins <
+        item.price
+    ){
+
+        showNotification(
+            "❌ You don't have enough coins."
+        );
+
+        return;
+
+    }
+
+
+    /* Spend */
+
+    const success =
+        spendCoins(item.price);
+
+
+    if(!success){
+
+        showNotification(
+            "❌ Purchase failed."
+        );
+
+        return;
+
+    }
+
+
+    /* Add */
+
+    ownedItems.push(id);
+
+    saveShop();
+
+
+    renderShop();
+
+    updateCoins();
+
+
+    showNotification(
+
+        "🛒 Purchased " +
+        item.name +
+        "!"
+
+    );
+
+}
+
+
+/* =========================================
+   EQUIP
+========================================= */
+
+function equipItem(id){
+
+    const item =
+
+        shopItems.find(
+            item => item.id === id
+        );
+
+
+    if(!item)
+        return;
+
+
+    if(!isOwned(id)){
+
+        showNotification(
+            "❌ You don't own this item."
+        );
+
+        return;
+
+    }
+
+
+    equipped[item.type] =
+        item.id;
+
+
+    saveEquipped();
+
+
+    renderShop();
+
+
+    showNotification(
+
+        "✅ " +
+        item.name +
+        " equipped!"
+
+    );
+
+}
+
+
+/* =========================================
+   UNEQUIP
+========================================= */
+
+function unequipItem(type){
+
+    equipped[type] =
+        "default";
+
+
+    saveEquipped();
+
+
+    renderShop();
+
+
+    showNotification(
+        "↩️ Item unequipped."
+    );
+
+}
+
+
+/* =========================================
+   COINS
+========================================= */
+
+function updateCoins(){
+
+    document.getElementById(
+        "coinDisplay"
+    ).textContent =
+
+        getPlayer().coins +
+        " 🪙";
+
+}
+
+
+/* =========================================
+   CREATE CARD
+========================================= */
+
+function createShopCard(item){
+
+    const owned =
+        isOwned(item.id);
+
+
+    const equippedNow =
+        isEquipped(item);
+
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "shop-item";
+
+
+    let buttonHTML;
+
+
+    /* ===============================
+       NOT OWNED
+    =============================== */
+
+    if(!owned){
+
+        buttonHTML = `
+
+            <button
+                class="buy-button"
+                onclick="
+                    buyItem('${item.id}')
+                ">
+
+                🪙 Buy for ${item.price}
+
+            </button>
+
+        `;
+
+    }
+
+
+    /* ===============================
+       EQUIPPED
+    =============================== */
+
+    else if(equippedNow){
+
+        buttonHTML = `
+
+            <button
+                class="buy-button"
+                onclick="
+                    unequipItem('${item.type}')
+                "
+                style="
+                    opacity:.7;
+                ">
+
+                Equipped ✓
+
+            </button>
+
+        `;
+
+    }
+
+
+    /* ===============================
+       OWNED
+    =============================== */
+
+    else{
+
+        buttonHTML = `
+
+            <button
+                class="buy-button"
+                onclick="
+                    equipItem('${item.id}')
+                ">
+
+                Equip
+
+            </button>
+
+        `;
+
+    }
+
+
+    card.innerHTML = `
+
+        <div
+            class="shop-image"
+            style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:5rem;
+            ">
+
+            ${item.icon}
+
+        </div>
+
+
+        <div class="shop-info">
+
+            <h2>
+                ${item.name}
+            </h2>
+
+
+            <p class="section-description">
+
+                ${item.description}
+
+            </p>
+
+
+            <div class="price">
+
+                ${
+                    owned
+
+                    ? "✅ Owned"
+
+                    : "🪙 " + item.price
+
+                }
+
+            </div>
+
+
+            ${buttonHTML}
+
+        </div>
+
+    `;
+
+
+    return card;
+
+}
+
+
+/* =========================================
+   RENDER SHOP
+========================================= */
+
+function renderShop(){
+
+    const grid =
+        document.getElementById(
+            "shopGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    shopItems.forEach(item => {
+
+        grid.appendChild(
+            createShopCard(item)
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+renderShop();
+
+updateCoins();
+
+
+/* =========================================
+   AUTO UPDATE
+========================================= */
+
+setInterval(()=>{
+
+    updateCoins();
+
+},1000);
+
+</script>
+
+</body>
+
+</html>

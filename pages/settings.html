@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | Pablo's Arcade</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="background"></div>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header>
+
+    <div class="logo">
+        🎮 Pablo's Arcade
+    </div>
+
+    <nav>
+
+        <a href="../index.html">Home</a>
+
+        <a href="profile.html">Profile</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="achievements.html">Achievements</a>
+
+        <a href="settings.html">Settings</a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+<section class="game-container">
+
+
+    <!-- HEADER -->
+
+    <div class="game-toolbar">
+
+        <h2>
+            ⚙️ Settings
+        </h2>
+
+        <div class="toolbar-buttons">
+
+            <button
+                onclick="location.href='../index.html'">
+
+                ⬅ Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         GENERAL
+    ====================================== -->
+
+    <section class="panel">
+
+        <h2>
+            🎨 General
+        </h2>
+
+
+        <!-- DARK MODE -->
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Dark Mode
+                </strong>
+
+                <p class="section-description">
+
+                    Use the dark arcade theme.
+
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="darkMode">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- ANIMATIONS -->
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Animations
+                </strong>
+
+                <p class="section-description">
+
+                    Enable interface animations.
+
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="animations">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- PARTICLES -->
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Background Particles
+                </strong>
+
+                <p class="section-description">
+
+                    Show animated background effects.
+
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="particles">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         AUDIO
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="margin-top:25px;">
+
+        <h2>
+            🔊 Audio
+        </h2>
+
+
+        <!-- MUSIC -->
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Music
+                </strong>
+
+                <p class="section-description">
+
+                    Play background music.
+
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="music">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- SOUND -->
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Sound Effects
+                </strong>
+
+                <p class="section-description">
+
+                    Enable game and interface sounds.
+
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="sound">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DISPLAY
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="margin-top:25px;">
+
+        <h2>
+            🖥️ Display
+        </h2>
+
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Fullscreen
+                </strong>
+
+                <p class="section-description">
+
+                    Enter fullscreen mode.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="buy-button"
+                style="
+                    width:auto;
+                    padding:12px 20px;
+                "
+                onclick="toggleFullscreen()">
+
+                ⛶ Fullscreen
+
+            </button>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Install App
+                </strong>
+
+                <p class="section-description">
+
+                    Install Pablo's Arcade if your
+                    browser supports it.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="buy-button"
+                style="
+                    width:auto;
+                    padding:12px 20px;
+                "
+                onclick="installApp()">
+
+                📲 Install
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         DATA
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="margin-top:25px;">
+
+        <h2>
+            💾 Data
+        </h2>
+
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Export Data
+                </strong>
+
+                <p class="section-description">
+
+                    Copy your arcade data so you
+                    can save a backup.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="buy-button"
+                style="
+                    width:auto;
+                    padding:12px 20px;
+                "
+                onclick="exportPlayerData()">
+
+                📤 Export
+
+            </button>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Import Data
+                </strong>
+
+                <p class="section-description">
+
+                    Restore previously exported data.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="buy-button"
+                style="
+                    width:auto;
+                    padding:12px 20px;
+                "
+                onclick="importPlayerData()">
+
+                📥 Import
+
+            </button>
+
+        </div>
+
+
+        <div class="setting">
+
+            <div>
+
+                <strong>
+                    Reset Arcade
+                </strong>
+
+                <p class="section-description">
+
+                    Delete all locally saved progress.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="buy-button"
+                style="
+                    width:auto;
+                    padding:12px 20px;
+                    background:#ff4757;
+                "
+                onclick="resetArcade()">
+
+                🗑️ Reset
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         KEYBOARD SHORTCUTS
+    ====================================== -->
+
+    <section
+        class="panel"
+        style="margin-top:25px;">
+
+        <h2>
+            ⌨️ Keyboard Shortcuts
+        </h2>
+
+
+        <div class="setting">
+
+            <strong>
+                F
+            </strong>
+
+            <span>
+                Toggle Fullscreen
+            </span>
+
+        </div>
+
+
+        <div class="setting">
+
+            <strong>
+                M
+            </strong>
+
+            <span>
+                Toggle Music
+            </span>
+
+        </div>
+
+
+        <div class="setting">
+
+            <strong>
+                T
+            </strong>
+
+            <span>
+                Toggle Dark Mode
+            </span>
+
+        </div>
+
+    </section>
+
+
+</section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 Pablo's Arcade
+    </p>
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script src="../js/app.js"></script>
+
+
+<script>
+
+/* =========================================
+   LOAD SETTINGS
+========================================= */
+
+function loadSettingsPage(){
+
+    document.getElementById(
+        "darkMode"
+    ).checked =
+        getSetting("darkMode");
+
+
+    document.getElementById(
+        "animations"
+    ).checked =
+        getSetting("animations");
+
+
+    document.getElementById(
+        "particles"
+    ).checked =
+        getSetting("particles");
+
+
+    document.getElementById(
+        "music"
+    ).checked =
+        getSetting("music");
+
+
+    document.getElementById(
+        "sound"
+    ).checked =
+        getSetting("sound");
+
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+document.getElementById(
+    "darkMode"
+).addEventListener(
+    "change",
+    function(){
+
+        setSetting(
+            "darkMode",
+            this.checked
+        );
+
+        applyTheme();
+
+    }
+);
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+document.getElementById(
+    "animations"
+).addEventListener(
+    "change",
+    function(){
+
+        setSetting(
+            "animations",
+            this.checked
+        );
+
+
+        document.body.classList.toggle(
+            "no-animations",
+            !this.checked
+        );
+
+    }
+);
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+document.getElementById(
+    "particles"
+).addEventListener(
+    "change",
+    function(){
+
+        setSetting(
+            "particles",
+            this.checked
+        );
+
+
+        const background =
+            document.getElementById(
+                "background"
+            );
+
+
+        background.style.display =
+            this.checked
+            ? "block"
+            : "none";
+
+    }
+);
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+document.getElementById(
+    "music"
+).addEventListener(
+    "change",
+    function(){
+
+        settings.music =
+            this.checked;
+
+        saveSettings();
+
+
+        if(this.checked){
+
+            playMusic();
+
+        }else{
+
+            stopMusic();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   SOUND
+========================================= */
+
+document.getElementById(
+    "sound"
+).addEventListener(
+    "change",
+    function(){
+
+        setSetting(
+            "sound",
+            this.checked
+        );
+
+    }
+);
+
+
+/* =========================================
+   EXPORT
+========================================= */
+
+function exportPlayerData(){
+
+    const data =
+        exportData();
+
+
+    copy(data);
+
+
+    showNotification(
+        "📤 Data copied to clipboard!"
+    );
+
+}
+
+
+/* =========================================
+   IMPORT
+========================================= */
+
+function importPlayerData(){
+
+    const data =
+        prompt(
+            "Paste your exported data here:"
+        );
+
+
+    if(!data)
+        return;
+
+
+    importData(data);
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+function resetArcade(){
+
+    const confirmed =
+        confirm(
+
+            "⚠️ Are you sure?\n\n" +
+
+            "This will delete all your " +
+            "progress, coins, XP, favorites " +
+            "and achievements."
+
+        );
+
+
+    if(!confirmed)
+        return;
+
+
+    resetPortal();
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+loadSettingsPage();
+
+
+/* =========================================
+   APPLY VISUAL SETTINGS
+========================================= */
+
+if(!getSetting("particles")){
+
+    document.getElementById(
+        "background"
+    ).style.display = "none";
+
+}
+
+
+if(!getSetting("animations")){
+
+    document.body.classList.add(
+        "no-animations"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
